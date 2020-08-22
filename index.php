@@ -1,21 +1,23 @@
 <?php 
 
-require_once("vendor/autoload.php");
+require_once("vendor/autoload.php"); // tras minhas dependecias do composer
+use  \Slim\Slim;   // caraga a classe que preciso
+use \Hcode\Page;   // carrega a classe que preciso 
 
-$app = new \Slim\Slim();
+
+$app = new Slim(); // define minha rota
 
 $app->config('debug', true);
 
-$app->get('/', function() {
+$app->get('/', function() {  // rota q estou chamando 
     
-	$sql = new Hcode\DB\SqL();
+	
+		  $page = new Page();
 
-	$results= $sql-> select("SELECT * FROM tb_users");
-
-	echo json_encode($results);
+		  $page->setTpl("index");
 
 });
 
-$app->run();
+$app->run();  //faz toda a pagina funcionar
 
  ?>
