@@ -3,7 +3,7 @@
 require_once("vendor/autoload.php"); // tras minhas dependecias do composer
 use  \Slim\Slim;   // caraga a classe que preciso
 use \Hcode\Page;   // carrega a classe que preciso 
-
+use  \Hcode\PageAdmin;
 
 $app = new Slim(); // define minha rota
 
@@ -17,6 +17,16 @@ $app->get('/', function() {  // rota q estou chamando
 		  $page->setTpl("index");
 
 });
+
+$app->get('/admin', function() {  // rota q estou chamando 
+    
+	
+	$page = new PageAdmin();
+
+	$page->setTpl("index");
+
+});
+
 
 $app->run();  //faz toda a pagina funcionar
 
